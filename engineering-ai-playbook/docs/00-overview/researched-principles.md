@@ -12,25 +12,18 @@ This is not a generic AI advice document. It is the baseline standard for how ou
 
 ---
 
-## 1. Scope and Context
+## Scope
 
-Our working environment:
-- Microservice architecture
-- Each microservice in a separate repository
-- Azure DevOps for repositories, work items, and delivery workflows
-- Backend development mainly in Visual Studio
-- Frontend development mainly in VS Code
-- Backend stack includes .NET Core and .NET Framework applications
-- APIs follow our existing .NET Core Web API toolkit patterns
-- Frontend is Angular
-- Frontend uses a custom theme and layout primitives such as `.grid`
-- SQL is heavily used
-- Couchbase is used in some systems
-- Entity Framework is used for regular data access
-- Complex or performance-sensitive queries are often implemented with stored procedures
-- Team includes both Developers and QA engineers
+These principles are intended for teams using GitHub Copilot in real engineering workflows.
 
-These principles must respect that environment. AI usage should strengthen our existing engineering discipline, not replace it with generic patterns from other ecosystems.
+They should be adapted to the local environment, including:
+- repository structure
+- delivery workflow
+- IDEs and tools
+- architectural constraints
+- frontend or backend patterns
+- persistence model
+- testing strategy
 
 ---
 
@@ -110,12 +103,11 @@ The expected behavior is:
 
 ### 3.6 Preserve intentional architecture
 The following should be treated as intentional unless the task explicitly says otherwise:
-- our .NET API toolkit patterns
-- our Angular custom theme and primitives
-- Entity Framework usage patterns
-- stored procedures for complex or performance-sensitive queries
-- service boundaries and existing contracts
-- chosen use of SQL or Couchbase in a service
+- existing framework and architecture patterns
+- current API or UI conventions
+- current persistence and data-access patterns
+- current design-system or shared-component rules
+- current service boundaries and compatibility expectations
 
 AI must not treat these as accidental legacy choices.
 

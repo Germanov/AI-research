@@ -1,8 +1,10 @@
 # Definition of Done
 
+## Purpose
+
 This checklist defines the minimum quality bar for work completed with or without AI assistance.
 
-A task is not done because code was written.  
+A task is not done because code was written.
 A task is done when the requested outcome is implemented, verified, reviewable, and safe to ship.
 
 ---
@@ -55,8 +57,6 @@ Apply only the sections relevant to the specific task.
 
 ## Backend-Specific Checks
 
-Apply when relevant.
-
 - [ ] API request and response behavior were preserved or explicitly updated.
 - [ ] Status codes, validation behavior, and error contracts were reviewed.
 - [ ] Entity Framework usage follows existing patterns.
@@ -68,8 +68,6 @@ Apply when relevant.
 
 ## Frontend-Specific Checks
 
-Apply when relevant.
-
 - [ ] Existing Angular patterns and shared components were reused.
 - [ ] The custom theme and approved layout primitives such as `.grid` were used correctly.
 - [ ] The UI works on relevant screen sizes.
@@ -79,8 +77,6 @@ Apply when relevant.
 ---
 
 ## QA Checks
-
-Apply when relevant.
 
 - [ ] Reproduction steps were validated against the final change.
 - [ ] Expected versus actual behavior is now clear and correct.
