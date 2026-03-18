@@ -106,4 +106,4 @@ scripts/
 ```
 
 Top-level support scripts live in `scripts/`.
-Their usage guidance lives in `docs/08-helper-scripts/`.
+Start with `docs/08-helper-scripts/README.md` for usage guidance, including `save-work-context` and Copilot hooks.

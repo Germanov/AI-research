@@ -29,6 +29,27 @@ Do not use it as a substitute for thinking. Review the generated file and tighte
 
 ---
 
+## Using It With Copilot Hooks
+
+This script is designed to be run manually.
+
+That is the recommended default.
+
+If you use Copilot CLI hooks, the best pattern is to use a `sessionEnd` hook to remind yourself to run `.\scripts\save-work-context.ps1`.
+
+Avoid calling this script directly from a hook unless you pass all required values yourself through a separate non-interactive wrapper.
+
+Why:
+
+- this script asks for real task state
+- it expects honest remaining-work notes
+- it expects explicit verification notes
+- raw hook metadata is not enough to produce a strong handoff on its own
+
+See `docs/08-helper-scripts/copilot-hooks.md` for a practical hook setup.
+
+---
+
 ## What It Captures
 
 The script writes a markdown file with the handoff structure used in this playbook:
@@ -135,6 +156,8 @@ Notes:
 
 ## Related Guidance
 
+- `docs/08-helper-scripts/README.md`
+- `docs/08-helper-scripts/copilot-hooks.md`
 - `docs/00-overview/execution-and-handoff-rules.md`
 - `docs/00-overview/where-to-record-what.md`
 - `docs/04-templates/prompt-create-handoff.md`
