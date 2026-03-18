@@ -10,6 +10,7 @@ It exists to help the team:
 - improve verification and review quality
 - make work easier to continue, review, and hand over
 - turn repeated lessons into reusable team guidance
+- provide simple helper scripts for repeatable documentation tasks
 
 This repository is for shared practices and reusable assets.  
 It is not a product repository and it is not the place for service-specific implementation notes.
@@ -64,6 +65,7 @@ Start with:
 Then use:
 - `docs/03-workflows/`
 - `docs/04-templates/`
+- `docs/08-helper-scripts/`
 
 ### If you are in QA
 Start with:
@@ -75,6 +77,7 @@ Then use:
 - `docs/03-workflows/qa-regression-workflow.md`
 - `docs/03-workflows/incident-investigation-workflow.md`
 - `docs/04-templates/`
+- `docs/08-helper-scripts/`
 
 ### If you are updating the playbook
 Start with:
@@ -82,6 +85,7 @@ Start with:
 - `docs/00-overview/where-to-record-what.md`
 - `docs/04-templates/README.md`
 - `docs/07-lessons-learned/`
+- `docs/08-helper-scripts/`
 
 ---
 
@@ -96,4 +100,10 @@ docs/
 ├─ 04-templates/
 ├─ 05-checklists/
 ├─ 06-examples/
-└─ 07-lessons-learned/
+├─ 07-lessons-learned/
+└─ 08-helper-scripts/
+scripts/
+```
+
+Top-level support scripts live in `scripts/`.
+Their usage guidance lives in `docs/08-helper-scripts/`.

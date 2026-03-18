@@ -25,6 +25,7 @@ This repository should contain:
 - workflows for bug fixing, feature work, PR review, regression checking, and incident investigation
 - checklists for delivery and verification
 - reusable prompt templates for developers and QA
+- optional helper script guidance for repeatable documentation tasks
 - prompt generators for creating or extending documentation
 - example files showing strong bug reports, plans, reviews, and verification notes
 
@@ -185,6 +186,16 @@ These files are meant to capture:
 - practical learning that should not stay only in memory or chat
 
 This section helps turn repeated experience into team-level improvement.
+
+### `08-helper-scripts`
+Use for practical guidance around small, explicit helper scripts that support the workflow.
+
+These files are meant to explain:
+- when a helper script is worth using
+- how to run it safely
+- what problem it solves
+- where its output should go
+- what it should not automate away
 
 ---
 

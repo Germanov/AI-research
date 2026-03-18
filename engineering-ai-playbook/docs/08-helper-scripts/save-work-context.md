@@ -1,0 +1,141 @@
+# Save Work Context Script
+
+## Purpose
+
+This helper script creates a markdown work-context file before you switch tasks, stop for the day, or hand work to another person.
+
+It supports the playbook rule that work should be restartable and handoff-ready.
+
+It does not replace the primary artifact for the work. If a PR, work item, or investigation note already exists, move the final summary there as well.
+
+---
+
+## Script Location
+
+`scripts/save-work-context.ps1`
+
+---
+
+## When to Use It
+
+Use this script when:
+
+- you are pausing a task and do not want to lose context
+- another developer or QA engineer may continue the work
+- you have partial verification and need to record exactly what was checked
+- you want a fast first draft before updating a PR description or work item
+
+Do not use it as a substitute for thinking. Review the generated file and tighten it before sharing it.
+
+---
+
+## What It Captures
+
+The script writes a markdown file with the handoff structure used in this playbook:
+
+- `Current Status`
+- `What Was Done`
+- `What Remains`
+- `Where to Continue`
+- `Risks and Uncertainties`
+- `Verification Done`
+- `Recommended Next Action`
+
+It also records:
+
+- generation time
+- repository name
+- working directory
+
+---
+
+## Basic Usage
+
+Run it interactively from the repository where you are working:
+
+```powershell
+.\scripts\save-work-context.ps1
+```
+
+The script will prompt you for the missing fields and then create a markdown file in:
+
+```text
+.\work-context\
+```
+
+---
+
+## Example With Parameters
+
+Use parameters when you already know the main details:
+
+```powershell
+.\scripts\save-work-context.ps1 `
+  -Title "Order details null display name bugfix" `
+  -Status "Ready for QA" `
+  -WorkItem "ADO-14231" `
+  -MainFiles "order-details.component.ts","customer-display.helper.ts" `
+  -WhatWasDone "Reproduced the bug","Implemented a local fallback","Checked the API contract was unchanged" `
+  -WhatRemains "Verify sibling UI flows","Decide whether the fallback should stay local" `
+  -RisksAndUncertainties "Shared helper may affect another screen" `
+  -VerificationDone "Build passed","Manual check completed on historical order ORD-104882" `
+  -RecommendedNextAction "Verify order summary and search results before opening the PR"
+```
+
+---
+
+## Output Behavior
+
+- If you do not provide `-OutputPath`, the script creates a timestamped file in `.\work-context\`.
+- If you do provide `-OutputPath`, the script writes to that exact path and creates the parent folder if needed.
+- If Git is available and the current directory is inside a repository, the current branch is detected automatically.
+- If a field is missing, the script prompts for it or uses an explicit placeholder instead of silently hiding the gap.
+
+This is intentional. The goal is to create a usable handoff, not a vague summary.
+
+---
+
+## Suggested Folder Structure
+
+Use this pattern in a product repo or local working folder:
+
+```text
+repo-root/
+├─ scripts/
+│  └─ save-work-context.ps1
+├─ docs/
+│  └─ 08-helper-scripts/
+│     └─ save-work-context.md
+└─ work-context/
+   ├─ 2026-03-18_173000_order-details-null-display-name-bugfix.md
+   └─ 2026-03-18_181500_checkout-regression-follow-up.md
+```
+
+Notes:
+
+- `scripts/` contains small, explicit helper tools.
+- `docs/08-helper-scripts/` explains how to use them.
+- `work-context/` is optional. Use it for local handoff drafts and continuity notes.
+- If these files should stay local, ignore the folder in the product repo.
+
+---
+
+## Recommended Daily Flow
+
+1. Pause before switching tasks.
+2. Run the script.
+3. Tighten the markdown so it is specific and honest about risk.
+4. Move or copy the final summary into the real source of truth for the work:
+   - work item
+   - PR description
+   - investigation note
+5. Keep the local file if it still helps continuity.
+
+---
+
+## Related Guidance
+
+- `docs/00-overview/execution-and-handoff-rules.md`
+- `docs/00-overview/where-to-record-what.md`
+- `docs/04-templates/prompt-create-handoff.md`
+- `docs/06-examples/example-good-handoff.md`
