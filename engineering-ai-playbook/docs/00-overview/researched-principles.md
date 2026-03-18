@@ -5,7 +5,7 @@ This document defines the operating principles for using GitHub Copilot across o
 It is based on:
 - our actual team setup and architecture
 - the internal AI coding guidelines we reviewed
-- selected ideas from external Claude-oriented best-practice repositories
+- selected ideas from external AI-assisted engineering best-practice repositories
 - deliberate adaptation for Copilot, Azure DevOps, Visual Studio, and VS Code
 
 This is not a generic AI advice document. It is the baseline standard for how our team should use AI tools in day-to-day engineering work.
@@ -396,8 +396,8 @@ When reviewing AI-assisted work, check:
 These are useful, but only when they reduce risk or improve clarity.
 
 ### 10.3 We do not adopt these ideas as defaults
-- Claude-specific command systems
-- Claude-specific agents, skills, hooks, and memory files
+- complex Copilot command systems as the default way of working
+- Copilot agents, skills, hooks, and helper automation as mandatory defaults across all repositories
 - complex multi-agent orchestration as the default workflow
 - broad autonomy with weak review controls
 - permissive tooling setups that reduce safety
