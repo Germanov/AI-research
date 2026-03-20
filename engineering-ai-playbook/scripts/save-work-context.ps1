@@ -12,6 +12,7 @@ param(
     [string[]]$MainFiles,
     [string[]]$WhatWasDone,
     [string[]]$WhatRemains,
+    [string[]]$BlockedItems,
     [string[]]$RisksAndUncertainties,
     [string[]]$VerificationDone,
     [string]$RecommendedNextAction,
@@ -177,6 +178,14 @@ else {
 }
 $WhatRemains = Resolve-List -CurrentValue $WhatRemains -Prompt 'What remains' -Fallback $remainingFallback
 
+$blockedFallback = if ($Status -eq 'Blocked') {
+    '[describe blocker]'
+}
+else {
+    'None currently.'
+}
+$BlockedItems = Resolve-List -CurrentValue $BlockedItems -Prompt 'Blocked items or blockers' -Fallback $blockedFallback
+
 $RisksAndUncertainties = Resolve-List -CurrentValue $RisksAndUncertainties -Prompt 'Risks and uncertainties' -Fallback 'No additional risks recorded.'
 $VerificationDone = Resolve-List -CurrentValue $VerificationDone -Prompt 'Verification done' -Fallback 'Not yet verified.'
 
@@ -230,6 +239,9 @@ $(Format-BulletList -Items $WhatWasDone)
 
 ## What Remains
 $(Format-BulletList -Items $WhatRemains)
+
+## Blockers
+$(Format-BulletList -Items $BlockedItems)
 
 ## Where to Continue
 - Main file(s): $(($MainFiles -join ', '))

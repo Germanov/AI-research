@@ -22,17 +22,39 @@ Add an entry when:
 - a reusable prompt becomes clearly valuable
 - the team discovers a better way to guide Copilot
 
+Keep one-off local corrections in the task continuity note or work item.
+
+Promote the correction into this file when the lesson is durable enough to guide future work.
+
+---
+
+## Promotion Rule
+
+Promote a correction into this file when at least one of these is true:
+- the same issue happened more than once
+- the rule is clearly reusable across multiple tasks
+- the lesson should influence how Copilot behaves before touching code
+- the lesson should change a prompt, workflow, checklist, or instruction file
+
+Do not add an entry just to preserve a single task's temporary context.
+
 ---
 
 ## Entry Template
 
 ## [Lesson title]
 
-### Situation
-[What happened]
+### Date
+[YYYY-MM-DD]
 
-### Lesson
-[What should be remembered]
+### Author or Committer
+[Name, alias, or Git identity]
+
+### Rule
+[Short reusable rule Copilot should apply next time]
+
+### Situation or Context
+[What happened and where]
 
 ### Why It Matters
 [Impact or risk]

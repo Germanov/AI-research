@@ -58,6 +58,7 @@ Update it when:
 - root cause becomes clearer
 - verification is completed
 - a blocker is found
+- you are pausing or ending the session
 - the work is being handed over
 - the work is finished
 
@@ -96,6 +97,11 @@ When work may continue later or be picked up by someone else, leave a handoff us
 - [next step]
 - [next step]
 - [next step]
+
+## Blockers
+- [current blocker]
+- [dependency or waiting item]
+- [use `None currently.` if there are no blockers]
 
 ## Where to Continue
 - Main file(s): [file paths]
@@ -211,6 +217,7 @@ A restartable task state should make clear:
 - the current source of truth
 - what was already done
 - what remains
+- what is currently blocked
 - what was verified
 - what the next action is
 

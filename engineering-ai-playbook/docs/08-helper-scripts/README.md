@@ -40,6 +40,8 @@ Read:
 ## Working Rules
 
 - Prefer user-triggered helpers for important summaries and handoffs.
+- Keep continuity files local or gitignored by default in shared repositories.
+- Prefer one continuity file per task, branch, or timestamped pause instead of one shared session-memory file.
 - Keep hook actions short, reliable, and easy to understand.
 - Do not let hooks invent final status, verification, or risk notes automatically.
 - Move final handoff or verification notes into the real source of truth for the work.

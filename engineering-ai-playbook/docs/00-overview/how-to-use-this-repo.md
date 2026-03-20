@@ -51,7 +51,8 @@ Start here:
 2. `docs/00-overview/ai-working-agreement.md`
 3. `docs/00-overview/execution-and-handoff-rules.md`
 4. `docs/00-overview/decision-rules.md`
-5. `docs/05-checklists/definition-of-done.md`
+5. `docs/00-overview/where-to-record-what.md`
+6. `docs/05-checklists/definition-of-done.md`
 
 Then read based on role:
 
@@ -185,6 +186,8 @@ These files are meant to capture:
 - lessons that should update future guidance
 - practical learning that should not stay only in memory or chat
 
+Use this section for durable rules and repeated corrections, not as a live task log.
+
 This section helps turn repeated experience into team-level improvement.
 
 ### `08-helper-scripts`
@@ -196,6 +199,8 @@ These files are meant to explain:
 - what problem it solves
 - where its output should go
 - what it should not automate away
+
+Continuity files created by helper scripts should usually stay local or gitignored and should be scoped per task, branch, or timestamped pause rather than as one shared mutable file.
 
 ---
 
@@ -213,3 +218,8 @@ service-repo/
       ├─ backend.instructions.md
       ├─ frontend.instructions.md
       └─ tests.instructions.md
+```
+
+Use those `.github` files for stable repo behavior.
+
+Use repo-local `work-context/` notes for temporary in-progress or blocked task state.

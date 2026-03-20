@@ -8,6 +8,8 @@ It supports the playbook rule that work should be restartable and handoff-ready.
 
 It does not replace the primary artifact for the work. If a PR, work item, or investigation note already exists, move the final summary there as well.
 
+Use it to preserve the current in-progress state honestly, including blockers.
+
 ---
 
 ## Script Location
@@ -57,6 +59,7 @@ The script writes a markdown file with the handoff structure used in this playbo
 - `Current Status`
 - `What Was Done`
 - `What Remains`
+- `Blockers`
 - `Where to Continue`
 - `Risks and Uncertainties`
 - `Verification Done`
@@ -98,6 +101,7 @@ Use parameters when you already know the main details:
   -MainFiles "order-details.component.ts","customer-display.helper.ts" `
   -WhatWasDone "Reproduced the bug","Implemented a local fallback","Checked the API contract was unchanged" `
   -WhatRemains "Verify sibling UI flows","Decide whether the fallback should stay local" `
+  -BlockedItems "Waiting for product decision on whether the fallback should be shared" `
   -RisksAndUncertainties "Shared helper may affect another screen" `
   -VerificationDone "Build passed","Manual check completed on historical order ORD-104882" `
   -RecommendedNextAction "Verify order summary and search results before opening the PR"
@@ -111,6 +115,12 @@ Use parameters when you already know the main details:
 - If you do provide `-OutputPath`, the script writes to that exact path and creates the parent folder if needed.
 - If Git is available and the current directory is inside a repository, the current branch is detected automatically.
 - If a field is missing, the script prompts for it or uses an explicit placeholder instead of silently hiding the gap.
+
+Recommended defaults:
+
+- keep `work-context/` local or gitignored in shared repositories
+- use one file per task, branch, or timestamped pause
+- avoid one shared file that gets rewritten at the end of every session
 
 This is intentional. The goal is to create a usable handoff, not a vague summary.
 
@@ -138,19 +148,32 @@ Notes:
 - `docs/08-helper-scripts/` explains how to use them.
 - `work-context/` is optional. Use it for local handoff drafts and continuity notes.
 - If these files should stay local, ignore the folder in the product repo.
+- In multi-person repositories, prefer local or gitignored continuity files over a single shared mutable note.
+
+## Recommended Naming
+
+Use names that make the note operational, not generic.
+
+Good examples:
+- `2026-03-18_173000_order-details-null-display-name-bugfix.md`
+- `feature-branch-handoff.md`
+- `current-task-context.md`
+
+Avoid vague names such as `primer.md` for live task state.
 
 ---
 
 ## Recommended Daily Flow
 
-1. Pause before switching tasks.
-2. Run the script.
-3. Tighten the markdown so it is specific and honest about risk.
-4. Move or copy the final summary into the real source of truth for the work:
+1. Start or refresh the note when work becomes non-trivial.
+2. Update it when a major decision changes the plan or a blocker appears.
+3. Pause before switching tasks and refresh the note again.
+4. Tighten the markdown so it is specific and honest about risk.
+5. Move or copy the final summary into the real source of truth for the work:
    - work item
    - PR description
    - investigation note
-5. Keep the local file if it still helps continuity.
+6. Keep the local file if it still helps continuity.
 
 ---
 

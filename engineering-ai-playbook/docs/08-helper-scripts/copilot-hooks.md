@@ -33,6 +33,7 @@ For Copilot coding agent on GitHub, the hook configuration must also exist on th
 
 Good use cases:
 
+- remind yourself to review repo instructions or a local continuity note when a session starts
 - remind yourself to save work context when a session ends
 - log prompt or session events for a lightweight local audit trail
 - add small policy checks in high-risk repositories
@@ -41,6 +42,7 @@ Good use cases:
 Bad use cases:
 
 - auto-writing final handoff notes with invented detail
+- maintaining a single shared session-memory file through hook automation
 - pretending hook data is enough to describe real verification
 - running long or fragile scripts that slow normal work
 - hiding important decisions inside automation
@@ -142,7 +144,7 @@ Keep `save-work-context.ps1` as the reviewed, user-facing step.
 
 | Hook | Good use | Avoid |
 |---|---|---|
-| `sessionStart` | small session log, local reminder | heavy startup automation |
+| `sessionStart` | small session log, reminder to review repo instructions or a continuity note | heavy startup automation |
 | `sessionEnd` | remind the user to run `save-work-context.ps1` | auto-writing final handoff text |
 | `userPromptSubmitted` | local prompt logging in controlled environments | collecting sensitive prompt data without review |
 | `preToolUse` | narrow policy checks for risky tools | broad blocking rules before the team is ready |
